@@ -17,40 +17,46 @@
 <body>
   <div class="bg" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <div class="brand">
-      <div class="brandTitle">80/20 Training 2026</div>
-      <div class="brandSub">Half Marathon · Dynamic Training Calendar</div>
+  <header class="cyberHeader">
+    <div class="headerLogo">
+      <img src="./donot.jpg" alt="Logo" class="logoImg" />
+      <div class="brand">
+        <div class="brandTitle">80/20 Training</div>
+        <div class="brandSub">2026 Calendar</div>
+      </div>
     </div>
 
-    <div class="controls">
-      <div class="controlGroup">
-        <label class="controlLabel" for="startDate">Week 1 start (Mon)</label>
-        <input id="startDate" type="date" class="controlInput" />
-      </div>
-
-      <div class="controlGroup raceCallout">
-        <div class="controlLabel">Race day</div>
-        <div class="raceName">Donot Stop Half Marathon · Fort Worth</div>
-        <div id="raceDate" class="raceDate">Sunday · Apr 26 2026</div>
-        <button id="alignRace" class="ghostBtn">Align Week 1</button>
-      </div>
-
-      <div class="controlGroup">
-        <div class="segmented" role="tablist" aria-label="Calendar view">
-          <button class="segBtn" data-view="fourWeek" role="tab" aria-selected="true">4 weeks</button>
-          <button class="segBtn" data-view="dayGridMonth" role="tab" aria-selected="false">Month</button>
-          <button class="segBtn" data-view="timeGridWeek" role="tab" aria-selected="false">Week</button>
-          <button class="segBtn" data-view="timeGridDay" role="tab" aria-selected="false">Day</button>
+    <div class="headerControls">
+      <div class="controlPanel">
+        <div class="panelRow">
+          <label class="panelLabel" for="startDate">Week 1 Start</label>
+          <input id="startDate" type="date" class="cyberInput" />
+        </div>
+        <div class="panelRow raceRow">
+          <div class="panelLabel">Target Race</div>
+          <div class="raceDisplay">
+            <span class="raceNameSmall">Donot Stop Half</span>
+            <span id="raceDate" class="raceDateSmall">Apr 26 2026</span>
+          </div>
+          <button id="alignRace" class="cyberBtn sm" title="Align start date to race">Align</button>
         </div>
       </div>
+    </div>
 
-      <div class="controlGroup actions">
-        <button id="prevBtn" class="ghostBtn" title="Previous">←</button>
-        <button id="todayBtn" class="ghostBtn">Today</button>
-        <button id="nextBtn" class="ghostBtn" title="Next">→</button>
-        <button id="aboutBtn" class="primaryBtn">Plan</button>
+    <div class="headerActions">
+      <div class="segmented" role="tablist">
+        <button class="segBtn" data-view="fourWeek" role="tab" aria-selected="true">4 Wks</button>
+        <button class="segBtn" data-view="dayGridMonth" role="tab">Month</button>
+        <button class="segBtn" data-view="timeGridWeek" role="tab">Week</button>
       </div>
+      
+      <div class="navGroup">
+        <button id="prevBtn" class="iconBtn" title="Previous">←</button>
+        <button id="todayBtn" class="cyberBtn">Today</button>
+        <button id="nextBtn" class="iconBtn" title="Next">→</button>
+      </div>
+
+      <button id="aboutBtn" class="cyberBtn primary">Plan</button>
     </div>
   </header>
 
