@@ -394,7 +394,8 @@ body{
     background: rgba(255,255,255,.72);
     border-radius: 12px 0 0 12px;
     padding:0;
-    margin-left:-2px;
+    margin-left:0;
+    transform: translateX(-2px); /* Preserve visual offset without negative margin */
     overflow:hidden;
   }
   .fc .fc-event .mEventMain{
