@@ -12,6 +12,7 @@ const WEEKS_BEFORE_RACE = RACE_WEEK - 1;
 const el = {
   startDate: document.getElementById("startDate"),
   calendar: document.getElementById("calendar"),
+  monthTitle: document.getElementById("monthTitle"),
   raceDate: document.getElementById("raceDate"),
   alignRace: document.getElementById("alignRace"),
 
@@ -38,6 +39,80 @@ const el = {
   aboutClose: document.getElementById("aboutClose"),
   aboutOk: document.getElementById("aboutOk")
 };
+
+function isMobileLayout(){
+  return window.matchMedia?.("(max-width: 640px)")?.matches ?? false;
+}
+
+function abbreviateForVerticalLabel(text){
+  const cleaned = String(text || "")
+    .toUpperCase()
+    .replace(/[^A-Z0-9 ]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!cleaned) return "";
+
+  // Prefer short, readable labels that fit vertically.
+  const map = {
+    FOUNDATION: "FOUND",
+    RECOVERY: "RECOV",
+    TEMPO: "TEMPO",
+    SPEED: "SPEED",
+    LONG: "LONG",
+    INTERVAL: "INT",
+    INTERVALS: "INT",
+    OPTIONAL: "OPT",
+    CROSS: "XTR",
+    TRAINING: "TRN",
+    REST: "REST",
+    RACE: "RACE",
+    SHAKEOUT: "SHAK",
+    TUNE: "TUNE",
+    HIGH: "HIGH",
+    MIXED: "MIX"
+  };
+
+  const first = cleaned.split(" ")[0];
+  const mapped = map[first];
+  const base = mapped || first;
+
+  // Hard limit to keep within a 72px tile with upright letters.
+  return base.slice(0, 5);
+}
+
+function splitTitleForMobile(title){
+  const cleaned = String(title || "")
+    .replace(/\([^)]*\)/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!cleaned) return { side: "", main: "" };
+
+  const lc = cleaned.toLowerCase();
+
+  if (lc.includes("play")){
+    const side = cleaned.replace(/\bplay\b/i, "").trim();
+    return { side, main: "PLAY" };
+  }
+
+  if (lc.includes("rest")){
+    return { side: "REST", main: "REST" };
+  }
+
+  if (lc.startsWith("race day")){
+    const side = cleaned.replace(/^race day\s*:?/i, "").trim();
+    return { side, main: "RACE" };
+  }
+
+  if (lc.includes("run")){
+    const side = cleaned.replace(/\brun\b/i, "").trim();
+    return { side, main: "RUN" };
+  }
+
+  // Fallback: treat as a run workout.
+  return { side: cleaned, main: "RUN" };
+}
 
 function formatLongDate(iso){
   const [y,m,d] = iso.split("-").map(Number);
@@ -220,9 +295,46 @@ function initCalendar(week1Monday){
 
     headerToolbar: false,
 
+    datesSet: () => {
+      if (el.monthTitle) el.monthTitle.textContent = calendar?.view?.title ?? "";
+    },
+
     dayMaxEvents: true,
 
     events,
+
+    dayCellContent: (arg) => {
+      // Mobile-only: remove the month name inside the grid (show day number only).
+      if (!isMobileLayout()) return;
+      return { html: `<span class="dayNum">${arg.date.getDate()}</span>` };
+    },
+
+    eventContent: (arg) => {
+      // Mobile-only: match the sketch layout.
+      if (!isMobileLayout()) return;
+
+      const { side, main } = splitTitleForMobile(arg.event.title);
+      const sideShort = abbreviateForVerticalLabel(side);
+
+      const wrap = document.createElement("div");
+      wrap.className = "mEvent";
+
+      const sideEl = document.createElement("div");
+      sideEl.className = "mEventSide";
+      sideEl.textContent = sideShort;
+
+      const mainEl = document.createElement("div");
+      mainEl.className = "mEventMain";
+      mainEl.textContent = main.toUpperCase();
+
+      wrap.append(sideEl, mainEl);
+      return { domNodes: [wrap] };
+    },
+
+    windowResize: () => {
+      // Re-render so eventContent can switch between mobile and desktop.
+      calendar?.rerenderEvents?.();
+    },
 
     eventClick: (info) => {
       if (Date.now() < suppressClickUntil) return;
@@ -263,6 +375,8 @@ function initCalendar(week1Monday){
   calendar.render();
   calendar.gotoDate(toISODate(week1Monday));
   renderDetails(null);
+
+  if (el.monthTitle) el.monthTitle.textContent = calendar?.view?.title ?? "";
 }
 
 function wireUI(){
