@@ -273,6 +273,10 @@ body{
 
 .calendar{padding:10px 10px 14px}
 
+.calendar .fc .fc-daygrid-body table {
+  border-spacing: 0 6px;
+}
+
 .monthTitle{
   padding: 12px 16px 8px;
   text-align:center;
