@@ -430,7 +430,7 @@ body{
 
 @media (max-width: 560px){
   .fc .fc-event{
-    padding:8px 10px;
+    padding:8px 10px 8px 0;
     min-height:66px;
   }
   .layout{grid-template-columns:1fr;}
