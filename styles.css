@@ -420,7 +420,6 @@ body{
       0 0 14px rgba(255,0,110,.32),
       0 0 18px rgba(76,201,240,.22);
     box-shadow: 0 6px 16px rgba(0,0,0,.5);
-    max-width: calc(100% - 18px);
     overflow:hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
