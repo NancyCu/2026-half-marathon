@@ -129,7 +129,7 @@ body{
 }
 
 .cp-label{
-  font-size:11px; /* Slightly larger readable label */
+  font-size:13px; /* Slightly larger readable label */
   text-transform:uppercase; 
   letter-spacing:1px; 
   color:var(--muted2); 
@@ -148,17 +148,17 @@ body{
   gap:2px;
 }
 
-.raceNameSmall{font-weight:700; font-size:13px; color:#d500ff; letter-spacing:0.2px}
-.raceDateSmall{font-size:12px; color:var(--text); font-weight:600}
+.raceNameSmall{font-weight:700; font-size:16px; color:#d500ff; letter-spacing:0.2px}
+.raceDateSmall{font-size:14px; color:var(--text); font-weight:600}
 
 .cyberInput{
   background:rgba(255,255,255,0.05); /* Slight bg for hit area */
   border-radius: 4px;
-  padding: 4px 8px;
+  padding: 8px 12px;
   color:var(--text);
   border:1px solid var(--stroke);
   font-family:var(--font);
-  font-size:14px;
+  font-size:16px;
   font-weight:700;
   outline:none;
   margin-top:2px;
@@ -175,14 +175,14 @@ body{
   padding:8px 16px;
   border-radius:8px;
   font-weight:700;
-  font-size:12px;
+  font-size:14px;
   cursor:pointer;
   transition: all .2s;
 }
 .cyberBtn:hover{background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.2)}
 .cyberBtn.sm{
   padding:12px 20px; 
-  font-size:12px; 
+  font-size:14px; 
   height: fit-content;
   margin-left:auto; /* Push to right edge if needed */
   text-transform:uppercase; 
@@ -216,7 +216,7 @@ body{
   border:1px solid var(--stroke);
 }
 .segBtn{
-  background:transparent; border:none; color:var(--muted); padding:6px 12px; font-size:12px; font-weight:600; cursor:pointer; border-radius:6px;
+  background:transparent; border:none; color:var(--muted); padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer; border-radius:8px;
 }
 .segBtn[aria-selected="true"]{background:rgba(255,255,255,.1); color:#fff; box-shadow:0 2px 8px rgba(0,0,0,.2)}
 
@@ -230,6 +230,9 @@ body{
   display:grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, .85fr);
   gap: 20px;
+  min-height: calc(100vh - 200px);
+  grid-auto-rows: minmax(0, 1fr);
+  align-items: stretch;
 }
 
 .card{
