@@ -94,7 +94,6 @@ function renderDetails(event){
 
     <div class="detailGrid">
       <div class="kv"><div class="k">Zone</div><div class="v">${escapeHtml(p.zone || "—")}</div></div>
-      <div class="kv"><div class="k">Duration</div><div class="v">${escapeHtml(p.duration || "—")}</div></div>
       <div class="kv"><div class="k">Phase</div><div class="v">${escapeHtml((p.phaseName || "").replace("Phase ",""))}</div></div>
       <div class="kv"><div class="k">Week</div><div class="v">${escapeHtml(String(p.week ?? "—"))}</div></div>
     </div>
@@ -115,7 +114,6 @@ function openModalForEvent(event){
   el.modalBody.innerHTML = `
     <div class="detailGrid">
       <div class="kv"><div class="k">Zone</div><div class="v">${escapeHtml(p.zone || "—")}</div></div>
-      <div class="kv"><div class="k">Duration</div><div class="v">${escapeHtml(p.duration || "—")}</div></div>
       <div class="kv"><div class="k">Day</div><div class="v">${escapeHtml(p.dayName || "—")}</div></div>
       <div class="kv"><div class="k">Week</div><div class="v">${escapeHtml(String(p.week ?? "—"))}</div></div>
     </div>

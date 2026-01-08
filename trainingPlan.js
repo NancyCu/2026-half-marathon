@@ -326,8 +326,7 @@ export function buildTrainingEvents(week1Monday){
       if (!workout) return;
       const dayDate = addDays(weekStart, idx);
 
-      const titleBits = [workout.title];
-      if (workout.duration && workout.duration !== "—") titleBits.push(`(${workout.duration})`);
+      const title = workout.title;
 
       const kind = workout.kind || "";
       const classNames = [];
@@ -344,7 +343,7 @@ export function buildTrainingEvents(week1Monday){
 
       events.push({
         id: `w${weekObj.week}-${idx}`,
-        title: titleBits.join(" "),
+        title,
         start: toISODate(dayDate),
         allDay: true,
         classNames,
