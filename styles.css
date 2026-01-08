@@ -373,16 +373,15 @@ body{
   /* Mobile-only event layout: vertical specific name on left, RUN/PLAY/etc centered */
   .fc .fc-event .mEvent{
     height:100%;
-    width:100%;
     display:flex;
     align-items:stretch;
     gap:2px;
-    margin-left:-6px;
-    width:calc(100% + 6px);
-    overflow:hidden;
+    padding:0 4px 0 2px;
+    width:100%;
+    overflow:visible;
   }
   .fc .fc-event .mEventSide{
-    flex:0 0 16px;
+    flex:0 0 18px;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -392,10 +391,11 @@ body{
     font-weight: 950;
     font-size: 9px;
     letter-spacing: 0;
+    line-height: 1.1;
     color: rgba(15, 18, 26, .92);
     background: rgba(255,255,255,.72);
     border-radius: 12px 0 0 12px;
-    padding:0;
+    padding:2px 0;
     margin-left:0;
     transform: translateX(0);
     overflow:hidden;
