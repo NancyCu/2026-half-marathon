@@ -438,6 +438,16 @@ body{
     min-height:50px;
   }
   .layout{grid-template-columns:1fr;}
+
+  .layout {
+    min-height: auto;
+    grid-auto-rows: auto;
+    align-items: start;
+  }
+
+  .calendar {
+    min-height: 0;
+  }
   
   .cyberHeader{ flex-wrap: wrap; justify-content: space-between; gap: 16px; padding: 12px; }
   
