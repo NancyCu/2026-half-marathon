@@ -412,6 +412,8 @@ body{
       0 0 14px rgba(255,0,110,.38),
       0 0 18px rgba(76,201,240,.22);
     box-shadow: 0 6px 18px rgba(0,0,0,.45);
+    justify-self: end;
+    max-width: 70%;
   }
 }
 
