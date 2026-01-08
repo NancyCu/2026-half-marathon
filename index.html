@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Half Marathon Training Calendar</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- FullCalendar (global build) -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brandTitle">80/20 Training 2026</div>
+      <div class="brandSub">Half Marathon · Dynamic Training Calendar</div>
+    </div>
+
+    <div class="controls">
+      <div class="controlGroup">
+        <label class="controlLabel" for="startDate">Week 1 start (Mon)</label>
+        <input id="startDate" type="date" class="controlInput" />
+      </div>
+
+      <div class="controlGroup raceCallout">
+        <div class="controlLabel">Race day</div>
+        <div class="raceName">Donot Stop Half Marathon · Fort Worth</div>
+        <div id="raceDate" class="raceDate">Sunday · Apr 26 2026</div>
+        <button id="alignRace" class="ghostBtn">Align Week 1</button>
+      </div>
+
+      <div class="controlGroup">
+        <div class="segmented" role="tablist" aria-label="Calendar view">
+          <button class="segBtn" data-view="fourWeek" role="tab" aria-selected="true">4 weeks</button>
+          <button class="segBtn" data-view="dayGridMonth" role="tab" aria-selected="false">Month</button>
+          <button class="segBtn" data-view="timeGridWeek" role="tab" aria-selected="false">Week</button>
+          <button class="segBtn" data-view="timeGridDay" role="tab" aria-selected="false">Day</button>
+        </div>
+      </div>
+
+      <div class="controlGroup actions">
+        <button id="prevBtn" class="ghostBtn" title="Previous">←</button>
+        <button id="todayBtn" class="ghostBtn">Today</button>
+        <button id="nextBtn" class="ghostBtn" title="Next">→</button>
+        <button id="aboutBtn" class="primaryBtn">Plan</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout" aria-label="Training calendar layout">
+    <section class="card calendarCard" aria-label="Calendar">
+      <div class="cardHeader">
+        <div>
+          <div class="cardTitle">Calendar</div>
+          <div class="cardHint">Tap a workout to see details · Long-press to open popup</div>
+        </div>
+        <div class="legend" aria-label="Workout legend">
+          <span class="pill z1">Z1</span>
+          <span class="pill z2">Z2</span>
+          <span class="pill z3">Z3</span>
+          <span class="pill z4">Z4</span>
+          <span class="pill z5">Z5</span>
+          <span class="pill rest">Rest</span>
+          <span class="pill race">Race</span>
+        </div>
+      </div>
+
+      <div id="calendar" class="calendar"></div>
+    </section>
+
+    <aside class="card detailsCard" aria-label="Workout details">
+      <div class="cardHeader">
+        <div>
+          <div class="cardTitle">Workout Details</div>
+          <div id="detailsMeta" class="cardHint">Select a workout</div>
+        </div>
+      </div>
+
+      <div id="detailsBody" class="detailsBody">
+        <div class="emptyState">
+          <div class="emptyTitle">Pick a workout</div>
+          <div class="emptyText">Your selected workout’s structure, zone, and notes show up here.</div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <div id="modalBackdrop" class="modalBackdrop" hidden></div>
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modalHeader">
+      <div>
+        <div id="modalTitle" class="modalTitle">Workout</div>
+        <div id="modalSubtitle" class="modalSubtitle"></div>
+      </div>
+      <button id="modalClose" class="iconBtn" aria-label="Close">✕</button>
+    </div>
+    <div id="modalBody" class="modalBody"></div>
+    <div class="modalFooter">
+      <button id="modalSelect" class="ghostBtn">Show in side panel</button>
+      <button id="modalOk" class="primaryBtn">Done</button>
+    </div>
+  </div>
+
+  <div id="aboutBackdrop" class="modalBackdrop" hidden></div>
+  <div id="about" class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" hidden>
+    <div class="modalHeader">
+      <div>
+        <div id="aboutTitle" class="modalTitle">80/20 Training 2026</div>
+        <div class="modalSubtitle">How this page works</div>
+      </div>
+      <button id="aboutClose" class="iconBtn" aria-label="Close">✕</button>
+    </div>
+    <div id="aboutBody" class="modalBody"></div>
+    <div class="modalFooter">
+      <button id="aboutOk" class="primaryBtn">Got it</button>
+    </div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
