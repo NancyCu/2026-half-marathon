@@ -458,8 +458,8 @@ body{
   /* Mobile Grid: Left Col (Image) | Right Col (Controls) | Bottom Row (Brand) */
   .headerLeft { 
     display: grid; 
-    grid-template-columns: 140px 1fr; /* Image fixed width | Controls take rest */
-    grid-template-rows: 1fr auto; /* Content (equal height) | Brand */
+    grid-template-columns: 220px 1fr; /* Larger image area */
+    grid-template-rows: minmax(220px, 1fr) auto; /* Full-height image row and brand row */
     gap: 12px; 
     width: 100%; 
     align-items: stretch;
@@ -473,10 +473,10 @@ body{
     grid-column: 1 / 2;
     grid-row: 1;
     width: 100%; 
-    height: auto; 
-    max-height: 140px; /* Keep vertical space manageable */
-    object-fit: contain; 
-    border-radius: 6px;
+    height: 100%; 
+    max-height: none;
+    object-fit: cover; 
+    border-radius: 10px;
   }
 
   /* Explicitly place control panel in top-right */
@@ -500,17 +500,49 @@ body{
   
   .brandTitle { font-size: 16px; line-height: 1.2; }
   .brandSub { font-size: 14px; margin-top: 0; color: var(--muted); }
+
+  .cp-group { align-items: flex-start; }
+  .cp-race .raceInfo { gap: 0; }
+  .raceInfo span { display:block; }
+  .cp-race .raceInfo { margin-top: -2px; }
+  .cp-race .raceInfo span:last-child { margin-top: 0; }
+  .cp-race .raceInfo span:first-child { font-size: 16px; }
+  .cp-race .raceInfo span:last-child { font-size: 14px; }
+  .cp-race { align-items: flex-start; }
+  .cp-race .raceInfo { line-height: 1.2; }
+  .cp-race { padding-right: 6px; }
+  .cp-group { gap: 4px; }
+  .cp-start input { font-size: 16px; }
+  .cp-race { display:flex; flex-direction:column; }
+  .cp-race .raceInfo { align-items:flex-start; }
+  .cp-race span { text-align:left; }
+  .cp-race .raceInfo { justify-content:center; }
+  .cp-race { min-width: 0; }
+  .cp-group { width: 100%; }
+  .cp-race { max-width: 200px; }
+  .cp-race .raceInfo { padding-right: 4px; }
+  .cp-race .raceInfo { margin-bottom: 0; }
+  .cp-group { min-width: 0; }
+  .cp-race .raceInfo span { letter-spacing: .04em; }
+  .cp-race .raceInfo span:last-child { margin-top: 2px; }
+  .cp-race .raceInfo span:first-child { margin-bottom: 0; }
+  .cp-race .raceInfo span { line-height: 1; }
+  .cp-race .raceInfo span:last-child { color: rgba(255,255,255,.9); }
+  .cp-race .raceInfo span:first-child { color: #d500ff; }
+  .cp-race .raceInfo span:last-child { text-transform: none; }
+  .cp-race .raceInfo span:first-child { text-transform: uppercase; }
   
   /* Control Panel: Grid of 2 columns (Start | Race) and 1 row below (Align) */
   .controlPanel {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto auto; /* Two rows */
-    gap: 12px;
+    gap: 10px;
     width: 100%;
     border-left: none;
     padding-left: 0;
-    margin-top: 4px;
+    margin-top: 6px;
+    align-items: start;
   }
   
   /* Hide dividers */
