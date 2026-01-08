@@ -569,10 +569,11 @@ body{
 
 @media (max-width: 640px){
   .logoImg {
-    width: 140px;
+    width: 100%;
+    min-height: 160px;
     height: auto;
-    max-height: 140px;
-    object-fit: contain;
+    max-height: none;
+    object-fit: cover;
     box-shadow: 0 18px 26px rgba(0,0,0,.65);
   }
 
@@ -668,15 +669,18 @@ body{
   .layout{grid-template-columns:1fr;}
 
   .cyberHeader{ gap: 12px; }
-  /* Ensure the grid persists - Image Col vs Control Col */
-  .headerLeft { grid-template-columns: 1fr 1.3fr; gap: 12px; }
+  .headerLeft { grid-template-columns: 1fr; gap: 12px; }
   
-  .logoImg { height: auto; max-height: 90px; }
+  .logoImg {
+    width: 100%;
+    min-height: 140px;
+    max-height: none;
+    object-fit: cover;
+  }
   
   .cp-label { font-size: 10px; }
   .raceNameSmall { font-size: 12px; }
   
-  /* Input and dropdown stretch to fill the "empty box" area */
   .cyberInput { width: 100%; box-sizing: border-box; }
   .raceInfo { width: 100%; }
   
