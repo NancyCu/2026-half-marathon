@@ -670,6 +670,7 @@ body{
 
   .cyberHeader{ gap: 12px; }
   .headerLeft { grid-template-columns: 1fr; gap: 12px; }
+  .controlPanel { grid-column: 1 / 2; grid-row: 1; }
   
   .logoImg {
     width: 100%;
