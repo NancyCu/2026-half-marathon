@@ -18,28 +18,30 @@
   <div class="bg" aria-hidden="true"></div>
 
   <header class="cyberHeader">
-    <div class="headerLogo">
-      <img src="./donot.jpg" alt="Logo" class="logoImg" />
-      <div class="brand">
-        <div class="brandTitle">80/20 Training</div>
-        <div class="brandSub">2026 Calendar</div>
+    <div class="headerLeft">
+      <div class="headerLogo">
+        <img src="./donot.jpg" alt="Logo" class="logoImg" />
+        <div class="brand">
+          <div class="brandTitle">80/20 Training</div>
+          <div class="brandSub">2026 Calendar</div>
+        </div>
       </div>
-    </div>
 
-    <div class="headerControls">
       <div class="controlPanel">
-        <div class="panelRow">
-          <label class="panelLabel" for="startDate">Week 1 Start</label>
+        <div class="cp-group cp-start">
+          <label class="cp-label" for="startDate">Week 1 Start</label>
           <input id="startDate" type="date" class="cyberInput" />
         </div>
-        <div class="panelRow raceRow">
-          <div class="panelLabel">Target Race</div>
-          <div class="raceDisplay">
+        <div class="cp-divider"></div>
+        <div class="cp-group cp-race">
+          <div class="cp-label">Target Race</div>
+          <div class="raceInfo">
             <span class="raceNameSmall">Donot Stop Half</span>
             <span id="raceDate" class="raceDateSmall">Apr 26 2026</span>
           </div>
-          <button id="alignRace" class="cyberBtn sm" title="Align start date to race">Align</button>
         </div>
+        <div class="cp-divider"></div>
+        <button id="alignRace" class="cyberBtn sm" title="Align Week 1">ALIGN WEEK 1</button>
       </div>
     </div>
 
