@@ -377,6 +377,8 @@ body{
     display:flex;
     align-items:stretch;
     gap:2px;
+    margin-left:-6px;
+    width:calc(100% + 6px);
     overflow:hidden;
   }
   .fc .fc-event .mEventSide{
@@ -395,7 +397,7 @@ body{
     border-radius: 12px 0 0 12px;
     padding:0;
     margin-left:0;
-    transform: translateX(-2px); /* Preserve visual offset without negative margin */
+    transform: translateX(0);
     overflow:hidden;
   }
   .fc .fc-event .mEventMain{
