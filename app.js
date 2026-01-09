@@ -168,12 +168,20 @@ function copyTextToClipboard(text){
   document.body.appendChild(textarea);
   textarea.focus();
   textarea.select();
-  try {
-    document.execCommand("copy");
-  } finally {
-    document.body.removeChild(textarea);
-  }
-  return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    try {
+      const successful = document.execCommand("copy");
+      if (successful) {
+        resolve();
+      } else {
+        reject(new Error("Copy command was unsuccessful"));
+      }
+    } catch (err) {
+      reject(err);
+    } finally {
+      document.body.removeChild(textarea);
+    }
+  });
 }
 
 function announceCopyResult({ button, statusEl, success }){
