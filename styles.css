@@ -559,7 +559,36 @@ body{
     min-height: 200px;
   }
   .logoOverlay { padding: 16px; }
-  .controlPanel { width: 100%; }
+  .controlPanel {
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--stroke);
+    border-radius: 14px;
+    background: rgba(255,255,255,.03);
+  }
+  .cp-start,
+  .cp-race {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    width: 100%;
+  }
+  .cp-group { gap: 6px; }
+  .cp-label {
+    font-size: 11px;
+    line-height: 1.2;
+    letter-spacing: .12em;
+  }
+  .raceInfo {
+    gap: 4px;
+    line-height: 1.3;
+  }
+  .raceNameSmall,
+  .raceDateSmall {
+    font-size: 14px;
+  }
 
   /* If we inject day numbers via JS, keep them readable and compact */
   .fc .dayNum{
@@ -662,7 +691,7 @@ body{
   .logoImg { height: 100%; min-height: 160px; }
   
   .cp-label { font-size: 10px; }
-  .raceNameSmall { font-size: 12px; }
+  .raceNameSmall { font-size: 13px; }
   
   .cyberInput { width: 100%; box-sizing: border-box; }
   .raceInfo { width: 100%; }
