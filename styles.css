@@ -98,6 +98,7 @@ body{
 .cardTitleRow #aboutBtn:hover{
   background: linear-gradient(135deg, rgba(213,0,255,.5), rgba(213,0,255,.18));
   box-shadow: 0 0 22px rgba(213,0,255,.35);
+  transform: translateY(-1px);
 }
 .cardTitleRow .cyberBtn.garmin{padding:8px 14px; font-size:13px; border-radius:10px}
 
