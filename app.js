@@ -194,7 +194,13 @@ function announceCopyResult({ button, statusEl, success }){
     }, 1600);
   }
   if (statusEl){
-    statusEl.textContent = success ? "Copied to clipboard." : "Unable to copy.";
+    const message = success ? "Copied to clipboard." : "Unable to copy.";
+    statusEl.textContent = message;
+    window.setTimeout(() => {
+      if (statusEl.textContent === message){
+        statusEl.textContent = "";
+      }
+    }, 1600);
   }
 }
 
