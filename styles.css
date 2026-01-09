@@ -566,7 +566,7 @@ body{
     gap: 12px;
     padding: 12px;
     border: 1px solid var(--stroke);
-    border-radius: 14px;
+    border-radius: var(--radius);
     background: var(--card2);
   }
   .cp-start,
