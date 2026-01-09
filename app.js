@@ -29,6 +29,7 @@ const el = {
   modalSubtitle: document.getElementById("modalSubtitle"),
   modalBody: document.getElementById("modalBody"),
   modalClose: document.getElementById("modalClose"),
+  modalCopy: document.getElementById("modalCopy"),
   modalOk: document.getElementById("modalOk"),
   modalSelect: document.getElementById("modalSelect"),
 
@@ -143,6 +144,78 @@ function escapeHtml(s){
     .replaceAll("'","&#039;");
 }
 
+function buildWorkoutClipboardText(event){
+  if (!event) return "";
+  const p = event.extendedProps || {};
+  const details = (p.details && p.details.length) ? p.details : ["No additional notes."];
+  const lines = [
+    `Zone: ${p.zone || "—"}`,
+    `Day: ${p.dayName || "—"}`,
+    `Week: ${p.week ?? "—"}`
+  ];
+  details.forEach(line => lines.push(`\t•\t${line}`));
+  return lines.join("\n");
+}
+
+function copyTextToClipboard(text){
+  if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(text);
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.top = "-1000px";
+  textarea.style.opacity = "0";
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  return new Promise((resolve, reject) => {
+    try {
+      const successful = document.execCommand("copy");
+      if (successful) {
+        resolve();
+      } else {
+        reject(new Error("Copy command was unsuccessful"));
+      }
+    } catch (err) {
+      reject(err);
+    } finally {
+      document.body.removeChild(textarea);
+    }
+  });
+}
+
+function announceCopyResult({ button, statusEl, success }){
+  if (button){
+    const original = button.dataset.defaultLabel || button.textContent;
+    button.dataset.defaultLabel = original;
+    button.textContent = success ? "Copied!" : "Copy failed";
+    window.setTimeout(() => {
+      button.textContent = original;
+    }, 1600);
+  }
+  if (statusEl){
+    const message = success ? "Copied to clipboard." : "Unable to copy.";
+    statusEl.textContent = message;
+    window.setTimeout(() => {
+      if (statusEl.textContent === message){
+        statusEl.textContent = "";
+      }
+    }, 1600);
+  }
+}
+
+async function copyWorkoutDetails(event, ui){
+  if (!event) return;
+  const text = buildWorkoutClipboardText(event);
+  if (!text) return;
+  try {
+    await copyTextToClipboard(text);
+    announceCopyResult({ ...ui, success: true });
+  } catch (err){
+    announceCopyResult({ ...ui, success: false });
+  }
+}
+
 function renderDetails(event){
   if (!event){
     el.detailsMeta.textContent = "Select a workout";
@@ -173,7 +246,19 @@ function renderDetails(event){
     </div>
 
     <ul class="detailList">${details || "<li>No additional notes.</li>"}</ul>
+    <div class="detailActions">
+      <button class="ghostBtn copyBtn" type="button" data-copy-details>Copy details</button>
+      <span class="copyStatus" data-copy-status aria-live="polite"></span>
+    </div>
   `;
+
+  const copyBtn = el.detailsBody.querySelector("[data-copy-details]");
+  const copyStatus = el.detailsBody.querySelector("[data-copy-status]");
+  if (copyBtn){
+    copyBtn.onclick = () => {
+      copyWorkoutDetails(event, { button: copyBtn, statusEl: copyStatus });
+    };
+  }
 }
 
 function openModalForEvent(event){
@@ -196,6 +281,9 @@ function openModalForEvent(event){
   `;
 
   el.modal.dataset.eventId = event.id;
+  if (el.modalCopy){
+    el.modalCopy.textContent = el.modalCopy.dataset.defaultLabel || "Copy details";
+  }
   showModal(el.modalBackdrop, el.modal);
 }
 
@@ -409,6 +497,12 @@ function wireUI(){
   el.modalBackdrop.addEventListener("click", closeWorkoutModal);
   el.modalClose.addEventListener("click", closeWorkoutModal);
   el.modalOk.addEventListener("click", closeWorkoutModal);
+
+  el.modalCopy.addEventListener("click", () => {
+    const eventId = el.modal.dataset.eventId;
+    const ev = calendar.getEventById(eventId);
+    copyWorkoutDetails(ev, { button: el.modalCopy });
+  });
 
   el.modalSelect.addEventListener("click", () => {
     const eventId = el.modal.dataset.eventId;
