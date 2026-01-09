@@ -14,7 +14,6 @@ const el = {
   calendar: document.getElementById("calendar"),
   monthTitle: document.getElementById("monthTitle"),
   raceDate: document.getElementById("raceDate"),
-  alignRace: document.getElementById("alignRace"),
 
   prevBtn: document.getElementById("prevBtn"),
   nextBtn: document.getElementById("nextBtn"),
@@ -273,6 +272,15 @@ function getWeek1FromRace(){
   return shiftDays(raceMonday, -WEEKS_BEFORE_RACE * 7);
 }
 
+function persistWeek1Monday(week1Monday){
+  const iso = toISODate(week1Monday);
+  if (el.startDate){
+    el.startDate.value = iso;
+  }
+  localStorage.setItem(STORAGE_KEY_START, iso);
+  return iso;
+}
+
 function rebuildEvents(week1Monday){
   const events = buildTrainingEvents(week1Monday);
   calendar.removeAllEvents();
@@ -394,30 +402,7 @@ function wireUI(){
   el.nextBtn.addEventListener("click", () => calendar.next());
   el.todayBtn.addEventListener("click", () => calendar.today());
 
-  // Start date (Week 1 Monday)
-  el.startDate.addEventListener("change", () => {
-    const d = parseISODate(el.startDate.value);
-    if (!d) return;
-    const monday = getMondayOfWeek(d);
-    el.startDate.value = toISODate(monday);
-    localStorage.setItem(STORAGE_KEY_START, el.startDate.value);
-
-    rebuildEvents(monday);
-    calendar.gotoDate(el.startDate.value);
-    selectedEvent = null;
-    renderDetails(null);
-  });
-
-  const alignWithRace = () => {
-    const monday = getWeek1FromRace();
-    el.startDate.value = toISODate(monday);
-    localStorage.setItem(STORAGE_KEY_START, el.startDate.value);
-    rebuildEvents(monday);
-    calendar.gotoDate(el.startDate.value);
-    selectedEvent = null;
-    renderDetails(null);
-  };
-  el.alignRace.addEventListener("click", alignWithRace);
+  // Start date (Week 1 Monday) is fixed in this layout; nothing to bind here.
 
   // Workout modal
   const closeWorkoutModal = () => hideModal(el.modalBackdrop, el.modal);
@@ -456,8 +441,7 @@ function wireUI(){
 
 // Boot
 const week1Monday = getDefaultWeek1Monday();
-el.startDate.value = toISODate(week1Monday);
-localStorage.setItem(STORAGE_KEY_START, el.startDate.value);
+persistWeek1Monday(week1Monday);
 
 el.raceDate.textContent = formatRaceBadge(RACE_INFO.dateISO);
 
