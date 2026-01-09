@@ -86,7 +86,18 @@ body{
 
 .cardHeaderLeft{min-width:0}
 .cardTitleRow{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
-.cardTitleRow #aboutBtn{padding:8px 14px; font-size:13px; border-radius:10px}
+.cardTitleRow #aboutBtn{
+  padding:8px 14px;
+  font-size:13px;
+  border-radius:10px;
+  background: linear-gradient(135deg, rgba(213,0,255,.35), rgba(213,0,255,.12));
+  border:1px solid rgba(213,0,255,.55);
+  box-shadow: 0 0 16px rgba(213,0,255,.2);
+}
+.cardTitleRow #aboutBtn:hover{
+  background: linear-gradient(135deg, rgba(213,0,255,.5), rgba(213,0,255,.18));
+  box-shadow: 0 0 22px rgba(213,0,255,.35);
+}
 .cardTitleRow .cyberBtn.garmin{padding:8px 14px; font-size:13px; border-radius:10px}
 
 /* Control Panel - Desktop Grid Style (Left | Middle | Right) */
