@@ -22,37 +22,34 @@
       <div class="headerLogo">
         <div class="logoWrapper">
           <img src="./donot.jpg" alt="Logo" class="logoImg" />
-          <div class="logoOverlay">
-            <div class="logoBadge">80/20</div>
-            <div class="logoSubtitle">Half Marathon</div>
-          </div>
         </div>
       </div>
 
     </div>
 
     <div class="headerActions">
+      <button id="todayBtn" class="cyberBtn">Today</button>
       <div class="segmented" role="tablist">
         <button class="segBtn" data-view="fourWeek" role="tab" aria-selected="true">4 Wks</button>
         <button class="segBtn" data-view="dayGridMonth" role="tab">Month</button>
         <button class="segBtn" data-view="timeGridWeek" role="tab">Week</button>
       </div>
       
-      <div class="navGroup">
+      <div class="navArrows">
         <button id="prevBtn" class="iconBtn" title="Previous">←</button>
-        <button id="todayBtn" class="cyberBtn">Today</button>
         <button id="nextBtn" class="iconBtn" title="Next">→</button>
       </div>
-
-      <button id="aboutBtn" class="cyberBtn primary">Plan</button>
     </div>
   </header>
 
   <main class="layout" aria-label="Training calendar layout">
     <section class="card calendarCard" aria-label="Calendar">
       <div class="cardHeader">
-        <div>
-          <div class="cardTitle">Calendar</div>
+        <div class="cardHeaderLeft">
+          <div class="cardTitleRow">
+            <div class="cardTitle">Calendar</div>
+            <button id="aboutBtn" class="cyberBtn primary">Plan</button>
+          </div>
           <div class="cardHint">Tap a workout to see details · Long-press to open popup</div>
         </div>
         <div class="legend" aria-label="Workout legend">
