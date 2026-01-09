@@ -232,7 +232,7 @@ function buildAboutHtml(){
   return `
     <div class="detailTitle">${escapeHtml(TRAINING_META.subtitle)}</div>
     <div class="detailSub">${escapeHtml(RACE_INFO.label)} · ${escapeHtml(formatRaceBadge(RACE_INFO.dateISO))}</div>
-    <div class="detailSub">Tip: set “Week 1 start” to the Monday you want.</div>
+    <div class="detailSub">Tip: the calendar auto-aligns Week 1 from race day.</div>
 
     <div class="detailGrid" style="margin-top:14px">
       ${phaseHtml}
@@ -443,7 +443,9 @@ function wireUI(){
 const week1Monday = getDefaultWeek1Monday();
 persistWeek1Monday(week1Monday);
 
-el.raceDate.textContent = formatRaceBadge(RACE_INFO.dateISO);
+if (el.raceDate){
+  el.raceDate.textContent = formatRaceBadge(RACE_INFO.dateISO);
+}
 
 initCalendar(week1Monday);
 wireUI();
