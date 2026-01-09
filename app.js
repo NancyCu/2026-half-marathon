@@ -37,11 +37,28 @@ const el = {
   about: document.getElementById("about"),
   aboutBody: document.getElementById("aboutBody"),
   aboutClose: document.getElementById("aboutClose"),
-  aboutOk: document.getElementById("aboutOk")
+  aboutOk: document.getElementById("aboutOk"),
+
+  garminConnectBtn: document.getElementById("garminConnectBtn")
 };
 
 function isMobileLayout(){
   return window.matchMedia?.("(max-width: 640px)")?.matches ?? false;
+}
+
+function isIOS(){
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  return /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+}
+
+function handleGarminConnectClick(){
+  if (isIOS()){
+    // On iOS, try to open the Garmin Connect app using the connect:// URL scheme
+    window.location.href = "connect://";
+  } else {
+    // On other platforms, open the Garmin Connect web version
+    window.open("https://connect.garmin.com/", "_blank");
+  }
 }
 
 function abbreviateForVerticalLabel(text){
@@ -531,6 +548,11 @@ function wireUI(){
     if (!el.modal.hidden) closeWorkoutModal();
     if (!el.about.hidden) closeAbout();
   });
+
+  // Garmin Connect button
+  if (el.garminConnectBtn){
+    el.garminConnectBtn.addEventListener("click", handleGarminConnectClick);
+  }
 }
 
 // Boot
