@@ -57,49 +57,55 @@ body{
 
 .headerLeft{
   display:flex;
-  align-items:stretch; /* Stretch children to same height */
-  gap:32px;
-  flex: 1; /* Allow left side to take available space */
+  align-items:flex-start;
+  gap:18px;
+  flex: 1;
 }
 
 .headerLogo{
   display:flex;
-  flex-direction: row; /* Image left, Text right */
-  align-items:center;
-  gap:24px;
-  padding-right: 24px;
-  border-right: 1px solid var(--stroke); /* Visual separation from controls */
+  align-items:flex-start;
+  gap:18px;
+  padding-right: 16px;
+  border-right: 1px solid var(--stroke);
+}
+.logoWrapper{
+  position:relative;
+  width: 230px;
+  min-height: 150px;
+  border-radius: 16px;
+  overflow:hidden;
 }
 .logoImg{
-  height:120px; /* Big but fits in header */
-  width:auto;
-  border-radius:6px;
-  box-shadow: 0 0 12px rgba(0,0,0,.5);
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:0;
 }
-.brand{
+.logoOverlay{
+  position:absolute;
+  inset:0;
   display:flex;
   flex-direction:column;
+  justify-content:flex-end;
   align-items:flex-start;
-  justify-content: center; /* Center horizontally against the image height */
-  min-width: 180px; /* Ensure text has space */
-  height: 100%;
+  padding:14px;
+  background: linear-gradient(180deg, rgba(2,2,5,0) 45%, rgba(0,0,0,.85) 100%);
 }
-.brandTitle{
-  font-weight:900; 
-  font-size:32px; /* Even Larger text */
-  text-transform:uppercase; 
+.logoBadge{
+  font-weight:900;
+  font-size:32px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#fff;
+}
+.logoSubtitle{
+  font-size:12px;
+  text-transform:uppercase;
   letter-spacing:1px;
-  line-height:0.9;
-  background: linear-gradient(90deg, #fff, #bbb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.brandSub{
-  color:var(--muted); 
-  font-size:14px; /* Larger text */
-  margin-top:6px; 
-  font-weight:600;
-  letter-spacing:0.5px;
+  color:rgba(255,255,255,.75);
+  margin-top:2px;
 }
 
 /* Control Panel - Desktop Grid Style (Left | Middle | Right) */
@@ -455,51 +461,24 @@ body{
   
   .cyberHeader{ flex-wrap: wrap; justify-content: space-between; gap: 16px; padding: 12px; }
   
-  /* Mobile Grid: Left Col (Image) | Right Col (Controls) | Bottom Row (Brand) */
   .headerLeft { 
     display: grid; 
-    grid-template-columns: 220px 1fr; /* Larger image area */
-    grid-template-rows: minmax(220px, 1fr) auto; /* Full-height image row and brand row */
+    grid-template-columns: minmax(200px, 1fr) minmax(0, 1fr);
     gap: 12px; 
     width: 100%; 
     align-items: stretch;
   }
   
-  /* Flatten logo wrapper so img and brand are direct grid children */
-  .headerLogo { display: contents; }
-
-  /* Image fills top-left cell */
-  .logoImg { 
+  .headerLogo { display: block; }
+  .logoWrapper {
     grid-column: 1 / 2;
     grid-row: 1;
-    width: 100%; 
-    height: 100%; 
-    max-height: none;
-    object-fit: cover; 
-    border-radius: 10px;
   }
 
-  /* Explicitly place control panel in top-right */
   .controlPanel {
     grid-column: 2 / 3;
     grid-row: 1;
   }
-
-  /* Brand moves to bottom row, spanning full width */
-  .brand { 
-    grid-column: 1 / -1; 
-    grid-row: 2;
-    display: flex;
-    flex-direction: row; /* Single line */
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    margin-top: 4px;
-  }
-  
-  .brandTitle { font-size: 16px; line-height: 1.2; }
-  .brandSub { font-size: 14px; margin-top: 0; color: var(--muted); }
 
   .cp-group { align-items: flex-start; }
   .cp-race .raceInfo { gap: 0; }
@@ -568,14 +547,19 @@ body{
 }
 
 @media (max-width: 640px){
-  .logoImg {
+  .cyberHeader{ border-bottom: none; }
+  .headerLeft { flex-direction: column; gap: 12px; }
+  .headerLogo { border-right: none; }
+  .logoWrapper {
     width: 100%;
-    min-height: 160px;
-    height: auto;
-    max-height: none;
-    object-fit: cover;
-    box-shadow: 0 18px 26px rgba(0,0,0,.65);
+    min-height: 200px;
   }
+  .logoImg {
+    height: 100%;
+    min-height: 200px;
+  }
+  .logoOverlay { padding: 16px; }
+  .controlPanel { width: 100%; }
 
   /* If we inject day numbers via JS, keep them readable and compact */
   .fc .dayNum{
@@ -669,15 +653,13 @@ body{
   .layout{grid-template-columns:1fr;}
 
   .cyberHeader{ gap: 12px; }
-  .headerLeft { grid-template-columns: 1fr; gap: 12px; }
-  .controlPanel { grid-column: 1 / 2; grid-row: 1; }
+  .headerLeft { display:flex; flex-direction:column; gap: 12px; }
+  .controlPanel { width: 100%; }
   
-  .logoImg {
-    width: 100%;
-    min-height: 140px;
-    max-height: none;
-    object-fit: cover;
+  .logoWrapper {
+    min-height: 160px;
   }
+  .logoImg { height: 100%; min-height: 160px; }
   
   .cp-label { font-size: 10px; }
   .raceNameSmall { font-size: 12px; }
