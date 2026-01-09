@@ -241,9 +241,9 @@ function renderDetails(event){
   const copyBtn = el.detailsBody.querySelector("[data-copy-details]");
   const copyStatus = el.detailsBody.querySelector("[data-copy-status]");
   if (copyBtn){
-    copyBtn.addEventListener("click", () => {
+    copyBtn.onclick = () => {
       copyWorkoutDetails(event, { button: copyBtn, statusEl: copyStatus });
-    });
+    };
   }
 }
 
