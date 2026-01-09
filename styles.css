@@ -314,6 +314,7 @@ body{
   color:#fff;
 }
 .pill{
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 .pill.z1{background:rgba(0,240,255,.45); color:#000; border:1px solid var(--z1)}
