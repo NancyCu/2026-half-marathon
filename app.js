@@ -47,7 +47,7 @@ function isMobileLayout(){
 }
 
 function isIOS(){
-  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const userAgent = navigator.userAgent || navigator.vendor;
   return /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 }
 
