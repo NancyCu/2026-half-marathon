@@ -777,7 +777,7 @@ body{
   .logoWrapper {
     min-height: 130px;
   }
-  .logoImg { height: 100%; min-height: 160px; }
+  .logoImg { height: 100%; }
   
   .headerActions{
     margin-top: -36px;
