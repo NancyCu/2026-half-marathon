@@ -40,8 +40,16 @@ const el = {
   aboutOk: document.getElementById("aboutOk")
 };
 
+const HEADER_EXPANDED_CLASS = "header-expanded";
+const HEADER_SCROLL_THRESHOLD = 24;
+
 function isMobileLayout(){
   return window.matchMedia?.("(max-width: 640px)")?.matches ?? false;
+}
+
+function updateHeaderScrollState(){
+  const shouldExpand = isMobileLayout() && window.scrollY > HEADER_SCROLL_THRESHOLD;
+  document.body.classList.toggle(HEADER_EXPANDED_CLASS, shouldExpand);
 }
 
 function abbreviateForVerticalLabel(text){
@@ -543,3 +551,6 @@ if (el.raceDate){
 
 initCalendar(week1Monday);
 wireUI();
+updateHeaderScrollState();
+window.addEventListener("scroll", updateHeaderScrollState, { passive: true });
+window.addEventListener("resize", updateHeaderScrollState);
