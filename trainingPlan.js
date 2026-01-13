@@ -74,238 +74,514 @@ function w({ title, duration, zone, kind, details }){
 }
 
 const PLAN = [
-  // Phase 1: Base Building (weeks 1–6)
-  wk(1, [
-    w({ title:"Foundation Run", duration:"40 mins", zone:"Z2", kind:"z2", details:["Run 40 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Speed Play (Fartlek)", duration:"45 mins", zone:"Z5/Z1", kind:"z5", details:[
-      "5 min Z1 (Warm-up).",
-      "5 min Z2.",
-      "5 × (1 min Z5 / 2 min Z1) — 1 min fast (~6:30 pace), recover 2 min very slow.",
-      "5 min Z2.",
-      "15 min Z1 (Cool-down)."
-    ]}),
-    w({ title:"Foundation Run", duration:"45 mins", zone:"Z2", kind:"z2", details:["Run 45 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Tempo Run", duration:"50 mins", zone:"Z3", kind:"z3", details:[
-      "5 min Z1.",
-      "5 min Z2.",
-      "20 min Z3 (Aerobic Tempo @ 9:30–10:00) — comfortably hard.",
-      "5 min Z2.",
-      "15 min Z1."
-    ]}),
-    w({ title:"Recovery Run", duration:"30 mins", zone:"Z1", kind:"z1", details:["Run 30 minutes in Zone 1 (slower than 11:30). Very easy."] }),
-    w({ title:"Foundation Run", duration:"50 mins", zone:"Z2", kind:"z2", details:["Run 50 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Long Run", duration:"1 hr 15 mins", zone:"Z2", kind:"z2", details:["Run 75 minutes in Zone 2 (10:30–11:30)."] })
-  ]),
-  wk(2, [
-    w({ title:"Foundation Run", duration:"40 mins", zone:"Z2", kind:"z2", details:["Run 40 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Speed Play", duration:"48 mins", zone:"Z5/Z1", kind:"z5", details:[
-      "5 min Z1.",
-      "5 min Z2.",
-      "6 × (1 min Z5 / 2 min Z1) — 1 min fast, 2 min easy.",
-      "5 min Z2.",
-      "15 min Z1."
-    ]}),
-    w({ title:"Foundation Run", duration:"50 mins", zone:"Z2", kind:"z2", details:["Run 50 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Tempo Run", duration:"55 mins", zone:"Z3", kind:"z3", details:[
-      "5 min Z1.",
-      "5 min Z2.",
-      "25 min Z3 (Aerobic Tempo @ 9:30–10:00).",
-      "5 min Z2.",
-      "15 min Z1."
-    ]}),
-    w({ title:"Recovery Run", duration:"35 mins", zone:"Z1", kind:"z1", details:["Run 35 minutes in Zone 1 (slower than 11:30)."] }),
-    w({ title:"Foundation Run", duration:"55 mins", zone:"Z2", kind:"z2", details:["Run 55 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Long Run", duration:"1 hr 25 mins", zone:"Z2", kind:"z2", details:["Run 85 minutes in Zone 2 (10:30–11:30)."] })
-  ]),
-  wk(3, [
-    w({ title:"Foundation Run", duration:"40 mins", zone:"Z2", kind:"z2", details:["Run 40 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Speed Play", duration:"39 mins", zone:"Z5/Z1", kind:"z5", details:[
-      "5 min Z1.",
-      "5 min Z2.",
-      "3 × (1 min Z5 / 2 min Z1).",
-      "5 min Z2.",
-      "15 min Z1."
-    ]}),
-    w({ title:"Recovery Run", duration:"30 mins", zone:"Z1", kind:"z1", details:["Run 30 minutes in Zone 1 (slower than 11:30)."] }),
-    w({ title:"Tempo Run", duration:"45 mins", zone:"Z3", kind:"z3", details:[
-      "5 min Z1.",
-      "5 min Z2.",
-      "15 min Z3 (Aerobic Tempo @ 9:30–10:00).",
-      "5 min Z2.",
-      "15 min Z1."
-    ]}),
-    w({ title:"Rest Day / Optional Cross Training", duration:"30 mins", zone:"Easy", kind:"cross", details:["Rest day, or optional easy swim/bike (~30 mins)."] }),
-    w({ title:"Foundation Run", duration:"40 mins", zone:"Z2", kind:"z2", details:["Run 40 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Long Run", duration:"1 hr", zone:"Z2", kind:"z2", details:["Run 60 minutes in Zone 2 (10:30–11:30)."] })
-  ]),
-  wk(4, [
-    w({ title:"Foundation Run", duration:"45 mins", zone:"Z2", kind:"z2", details:["Run 45 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Speed Play", duration:"51 mins", zone:"Z5/Z1", kind:"z5", details:[
-      "5 min Z1.",
-      "5 min Z2.",
-      "7 × (1 min Z5 / 2 min Z1).",
-      "5 min Z2.",
-      "15 min Z1."
-    ]}),
-    w({ title:"Foundation Run", duration:"55 mins", zone:"Z2", kind:"z2", details:["Run 55 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Tempo Run", duration:"60 mins", zone:"Z3", kind:"z3", details:[
-      "5 min Z1.",
-      "5 min Z2.",
-      "30 min Z3 (Aerobic Tempo @ 9:30–10:00).",
-      "5 min Z2.",
-      "15 min Z1."
-    ]}),
-    w({ title:"Recovery Run", duration:"35 mins", zone:"Z1", kind:"z1", details:["Run 35 minutes in Zone 1 (slower than 11:30)."] }),
-    w({ title:"Foundation Run", duration:"1 hr", zone:"Z2", kind:"z2", details:["Run 60 minutes in Zone 2 (10:30–11:30)."] }),
-    w({ title:"Long Run", duration:"1 hr 35 mins", zone:"Z2", kind:"z2", details:["Run 95 minutes in Zone 2 (10:30–11:30)."] })
-  ]),
-  wk(5, [
-    w({ title:"Foundation Run", duration:"50 mins", zone:"Z2", kind:"z2", details:["Run 50 minutes in Zone 2."] }),
-    w({ title:"Speed Play", duration:"45 mins", zone:"Z5/Z1", kind:"z5", details:[
-      "5 min Z1, 5 min Z2.",
-      "8 × (1 min Z5 / 2 min Z1) — short fast bursts.",
-      "5 min Z1."
-    ]}),
-    w({ title:"Foundation Run", duration:"1 hr", zone:"Z2", kind:"z2", details:["Run 60 minutes in Zone 2."] }),
-    w({ title:"Tempo Run", duration:"55 mins", zone:"Z3", kind:"z3", details:[
-      "5 min Z1, 5 min Z2.",
-      "35 min Z3 — sustained moderate effort.",
-      "5 min Z2, 5 min Z1."
-    ]}),
-    w({ title:"Recovery Run", duration:"35 mins", zone:"Z1", kind:"z1", details:["Run 35 minutes in Zone 1."] }),
-    w({ title:"Foundation Run", duration:"50 mins", zone:"Z2", kind:"z2", details:["Run 50 minutes in Zone 2."] }),
-    w({ title:"Long Run", duration:"1 hr 40 mins", zone:"Z2", kind:"z2", details:["Run 100 minutes (~10 miles) in Zone 2."] })
-  ]),
-  wk(6, [
-    w({ title:"Foundation Run", duration:"40 mins", zone:"Z2", kind:"z2", details:["Run 40 minutes in Zone 2."] }),
-    w({ title:"Speed Play", duration:"40 mins", zone:"Z5/Z1", kind:"z5", details:[
-      "Warm-up.",
-      "5 × (1 min Z5 / 2 min Z1).",
-      "Cool-down."
-    ]}),
-    w({ title:"Recovery Run", duration:"30 mins", zone:"Z1", kind:"z1", details:["Run 30 minutes in Zone 1."] }),
-    w({ title:"Tempo Run", duration:"45 mins", zone:"Z3", kind:"z3", details:["Warm-up, 20 min Z3, cool-down."] }),
-    w({ title:"Rest Day", duration:"—", zone:"Rest", kind:"rest", details:["Rest day."] }),
-    w({ title:"Foundation Run", duration:"40 mins", zone:"Z2", kind:"z2", details:["Run 40 minutes in Zone 2."] }),
-    w({ title:"Long Run", duration:"1 hr 10 mins", zone:"Z2", kind:"z2", details:["Run 70 minutes (~7 miles) in Zone 2."] })
-  ]),
+  // Workouts (templates) — updated to match the provided 15-week plan.
+  (() => {
+    const T = {
+      "Foundation Run 5": w({
+        title: "Foundation Run 5",
+        duration: "40 mins",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["5 min Z1", "30 min Z2", "5 min Z1"]
+      }),
+      "Foundation Run 6": w({
+        title: "Foundation Run 6",
+        duration: "45 mins",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["5 min Z1", "35 min Z2", "5 min Z1"]
+      }),
+      "Foundation Run 7": w({
+        title: "Foundation Run 7",
+        duration: "50 mins",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["5 min Z1", "40 min Z2", "5 min Z1"]
+      }),
+      "Foundation Run 8": w({
+        title: "Foundation Run 8",
+        duration: "55 mins",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["5 min Z1", "45 min Z2", "5 min Z1"]
+      }),
+      "Foundation Run 9": w({
+        title: "Foundation Run 9",
+        duration: "60 mins",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["5 min Z1", "50 min Z2", "5 min Z1"]
+      }),
 
-  // Phase 2: Peak Phase (weeks 7–13)
-  wk(7, [
-    w({ title:"Foundation Run", duration:"50 mins", zone:"Z2", kind:"z2", details:["Run 50 minutes in Zone 2."] }),
-    w({ title:"High Intensity Intervals", duration:"50 mins", zone:"Z4/Z1", kind:"z4", details:[
-      "Warm-up (10–15 min).",
-      "5 × (3 min Z4 / 2 min Z1) — threshold pace (~7:30–7:50/mi).",
-      "Cool-down (10 min)."
-    ]}),
-    w({ title:"Foundation Run", duration:"1 hr", zone:"Z2", kind:"z2", details:["Run 60 minutes in Zone 2."] }),
-    w({ title:"Tempo Run", duration:"1 hr", zone:"Z3", kind:"z3", details:["Warm-up, 40 min Z3, cool-down."] }),
-    w({ title:"Recovery Run", duration:"35 mins", zone:"Z1", kind:"z1", details:["Run 35 minutes in Zone 1."] }),
-    w({ title:"Foundation Run", duration:"50 mins", zone:"Z2", kind:"z2", details:["Run 50 minutes in Zone 2."] }),
-    w({ title:"Long Run", duration:"1 hr 45 mins", zone:"Z2", kind:"z2", details:["Run 105 minutes (~11 miles) in Zone 2."] })
-  ]),
-  wk(8, [
-    w({ title:"Foundation Run", duration:"55 mins", zone:"Z2", kind:"z2", details:["Run 55 minutes in Zone 2."] }),
-    w({ title:"High Intensity Intervals", duration:"55 mins", zone:"Z4/Z1", kind:"z4", details:[
-      "Warm-up.",
-      "6 × (3 min Z4 / 2 min Z1).",
-      "Cool-down."
-    ]}),
-    w({ title:"Foundation Run", duration:"1 hr 5 mins", zone:"Z2", kind:"z2", details:["Run 65 minutes in Zone 2."] }),
-    w({ title:"Cruise Intervals", duration:"1 hr 5 mins", zone:"Z3/Z1", kind:"z3", details:[
-      "Warm-up.",
-      "4 × (10 min Z3 / 2 min Z1) — broken tempo.",
-      "Cool-down."
-    ]}),
-    w({ title:"Recovery Run", duration:"40 mins", zone:"Z1", kind:"z1", details:["Run 40 minutes in Zone 1."] }),
-    w({ title:"Foundation Run", duration:"55 mins", zone:"Z2", kind:"z2", details:["Run 55 minutes in Zone 2."] }),
-    w({ title:"Long Run", duration:"1 hr 50 mins", zone:"Z2", kind:"z2", details:["Run 110 minutes (~12 miles) in Zone 2."] })
-  ]),
-  wk(9, [
-    w({ title:"Foundation Run", duration:"45 mins", zone:"Z2", kind:"z2", details:["Run 45 minutes in Zone 2."] }),
-    w({ title:"Speed Play", duration:"45 mins", zone:"Z5/Z1", kind:"z5", details:["Lighter session (e.g., 6 × 1 min Z5)."] }),
-    w({ title:"Recovery Run", duration:"35 mins", zone:"Z1", kind:"z1", details:["Run 35 minutes in Zone 1."] }),
-    w({ title:"Tempo Run", duration:"50 mins", zone:"Z3", kind:"z3", details:["25 min Z3 within the run."] }),
-    w({ title:"Rest Day", duration:"—", zone:"Rest", kind:"rest", details:["Rest day."] }),
-    w({ title:"Foundation Run", duration:"45 mins", zone:"Z2", kind:"z2", details:["Run 45 minutes in Zone 2."] }),
-    w({ title:"Long Run", duration:"1 hr 15 mins", zone:"Z2", kind:"z2", details:["Run 75 minutes (~8 miles) in Zone 2."] })
-  ]),
-  wk(10, [
-    w({ title:"Foundation Run", duration:"55 mins", zone:"Z2", kind:"z2", details:["Run 55 minutes (mostly Zone 2)."] }),
-    w({ title:"Long Intervals", duration:"1 hr", zone:"Z4/Z1", kind:"z4", details:[
-      "Warm-up.",
-      "5 × (4 min Z4 / 3 min Z1).",
-      "Cool-down."
-    ]}),
-    w({ title:"Foundation Run", duration:"1 hr 10 mins", zone:"Z2", kind:"z2", details:["Run 70 minutes (mostly Zone 2)."] }),
-    w({ title:"Tempo Run", duration:"1 hr 10 mins", zone:"Z3", kind:"z3", details:["45 min Z3 continuous within the run."] }),
-    w({ title:"Recovery Run", duration:"40 mins", zone:"Z1", kind:"z1", details:["Run 40 minutes in Zone 1."] }),
-    w({ title:"Foundation Run", duration:"1 hr", zone:"Z2", kind:"z2", details:["Run 60 minutes in Zone 2."] }),
-    w({ title:"Long Run (Fast Finish)", duration:"1 hr 55 mins", zone:"Z2→Z3", kind:"z3", details:[
-      "Run Zone 2 until the last 15 mins.",
-      "Last 15 mins: Zone 3 steady/tempo (finish fast on tired legs)."
-    ]})
-  ]),
-  wk(11, [
-    w({ title:"Foundation Run", duration:"1 hr", zone:"Z2", kind:"z2", details:["Run 60 minutes in Zone 2."] }),
-    w({ title:"Long Intervals", duration:"1 hr 10 mins", zone:"Z4/Z1", kind:"z4", details:["4 × (5 min Z4 / 3 min Z1)."] }),
-    w({ title:"Foundation Run", duration:"1 hr 15 mins", zone:"Z2", kind:"z2", details:["Run 75 minutes in Zone 2."] }),
-    w({ title:"Cruise Intervals", duration:"1 hr 15 mins", zone:"Z3/Z1", kind:"z3", details:["3 × (15 min Z3 / 3 min Z1)."] }),
-    w({ title:"Recovery Run", duration:"40 mins", zone:"Z1", kind:"z1", details:["Run 40 minutes in Zone 1."] }),
-    w({ title:"Foundation Run", duration:"1 hr", zone:"Z2", kind:"z2", details:["Run 60 minutes in Zone 2."] }),
-    w({ title:"Long Run", duration:"2 hrs", zone:"Z2", kind:"z2", details:["Peak long run: 120 minutes (~13–14 miles) in Zone 2."] })
-  ]),
-  wk(12, [
-    w({ title:"Foundation Run", duration:"45 mins", zone:"Z2", kind:"z2", details:["Reduced-volume recovery week (similar to Week 9)."] }),
-    w({ title:"Speed Play", duration:"45 mins", zone:"Z5/Z1", kind:"z5", details:["Lighter speed session (e.g., 6 × 1 min Z5)."] }),
-    w({ title:"Recovery Run", duration:"35 mins", zone:"Z1", kind:"z1", details:["Easy recovery run in Zone 1."] }),
-    w({ title:"Tempo Run", duration:"50 mins", zone:"Z3", kind:"z3", details:["25 min Z3 within the run."] }),
-    w({ title:"Rest Day", duration:"—", zone:"Rest", kind:"rest", details:["Rest day."] }),
-    w({ title:"Foundation Run", duration:"45 mins", zone:"Z2", kind:"z2", details:["Easy foundation run in Zone 2."] }),
-    w({ title:"Long Run", duration:"1 hr 20 mins", zone:"Z2", kind:"z2", details:["Sunday long run: 80 minutes in Zone 2."] })
-  ]),
-  wk(13, [
-    w({ title:"Foundation Run", duration:"50 mins", zone:"Z2", kind:"z2", details:["Run 50 minutes (mostly Zone 2)."] }),
-    w({ title:"Mixed Intervals", duration:"1 hr", zone:"Z5+Z4/Z1", kind:"z4", details:[
-      "Warm-up.",
-      "3 × (1 min Z5 / 2 min Z1) + 3 × (3 min Z4 / 2 min Z1).",
-      "Cool-down."
-    ]}),
-    w({ title:"Foundation Run", duration:"1 hr", zone:"Z2", kind:"z2", details:["Run 60 minutes in Zone 2."] }),
-    w({ title:"Tempo Run", duration:"55 mins", zone:"Z3", kind:"z3", details:["30 min Z3 within the run."] }),
-    w({ title:"Recovery Run", duration:"35 mins", zone:"Z1", kind:"z1", details:["Run 35 minutes in Zone 1."] }),
-    w({ title:"Foundation Run", duration:"45 mins", zone:"Z2", kind:"z2", details:["Run 45 minutes in Zone 2."] }),
-    w({ title:"Long Run", duration:"1 hr 30 mins", zone:"Z2", kind:"z2", details:["Run 90 minutes in Zone 2."] })
-  ]),
+      "Recovery Run 1": w({
+        title: "Recovery Run 1",
+        duration: "20 mins",
+        zone: "Z1",
+        kind: "z1",
+        details: ["20 mins Z1 (Shakeout)"]
+      }),
+      "Recovery Run 3": w({
+        title: "Recovery Run 3",
+        duration: "30 mins",
+        zone: "Z1",
+        kind: "z1",
+        details: ["30 mins Z1"]
+      }),
+      "Recovery Run 4": w({
+        title: "Recovery Run 4",
+        duration: "35 mins",
+        zone: "Z1",
+        kind: "z1",
+        details: ["35 mins Z1"]
+      }),
+      "Recovery Run 5": w({
+        title: "Recovery Run 5",
+        duration: "40 mins",
+        zone: "Z1",
+        kind: "z1",
+        details: ["40 mins Z1"]
+      }),
 
-  // Phase 3: Taper (weeks 14–15)
-  wk(14, [
-    w({ title:"Recovery Run", duration:"40 mins", zone:"Z1", kind:"z1", details:["Run 40 minutes in Zone 1."] }),
-    w({ title:"Speed Play", duration:"45 mins", zone:"Z5/Z1", kind:"z5", details:["5 × (1 min Z5 / 2 min Z1)."] }),
-    w({ title:"Foundation Run", duration:"45 mins", zone:"Z2", kind:"z2", details:["Run 45 minutes in Zone 2."] }),
-    w({ title:"Tempo Run", duration:"40 mins", zone:"Z3", kind:"z3", details:["20 min Z3 (keep it controlled)."] }),
-    w({ title:"Rest Day", duration:"—", zone:"Rest", kind:"rest", details:["Rest day."] }),
-    w({ title:"Recovery Run", duration:"30 mins", zone:"Z1", kind:"z1", details:["Run 30 minutes in Zone 1."] }),
-    w({ title:"Long Run", duration:"1 hr", zone:"Z2", kind:"z2", details:["Very easy Zone 2 long run (~60 minutes)."] })
-  ]),
-  wk(15, [
-    w({ title:"Recovery Run", duration:"30 mins", zone:"Z1", kind:"z1", details:["Run 30 minutes in Zone 1."] }),
-    w({ title:"Interval Tune-up", duration:"35 mins", zone:"Z4/Z1", kind:"z4", details:[
-      "Warm-up.",
-      "3 × (2 min Z4 / 2 min Z1) — find some pop.",
-      "Cool-down."
-    ]}),
-    w({ title:"Recovery Run", duration:"30 mins", zone:"Z1", kind:"z1", details:["Run 30 minutes in Zone 1."] }),
-    w({ title:"Rest Day", duration:"—", zone:"Rest", kind:"rest", details:["Rest day."] }),
-    w({ title:"Shakeout Run", duration:"20 mins", zone:"Z1", kind:"z1", details:["Very easy shakeout in Zone 1."] }),
-    w({ title:"RACE DAY: HALF MARATHON", duration:"Race", zone:"Z3→Z5", kind:"race", details:[
-      "Strategy:",
-      "• Start in Zone 3 (steady).",
-      "• Middle miles: Zone 4 (threshold).",
-      "• Final 1–2 miles: Zone 5 (give everything left)."
-    ]}),
-    w({ title:"Rest / Recovery", duration:"—", zone:"Rest", kind:"rest", details:["Recovery day. Walk + mobility if you feel good."] })
-  ])
+      "Fast Finish Run 1": w({
+        title: "Fast Finish Run 1",
+        duration: "25 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "15 min Z2", "5 min Z3"]
+      }),
+      "Fast Finish Run 2": w({
+        title: "Fast Finish Run 2",
+        duration: "30 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "20 min Z2", "5 min Z3"]
+      }),
+      "Fast Finish Run 3": w({
+        title: "Fast Finish Run 3",
+        duration: "35 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "20 min Z2", "10 min Z3"]
+      }),
+      "Fast Finish Run 4": w({
+        title: "Fast Finish Run 4",
+        duration: "40 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "25 min Z2", "10 min Z3"]
+      }),
+      "Fast Finish Run 6": w({
+        title: "Fast Finish Run 6",
+        duration: "47 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "30 min Z2", "12 min Z3"]
+      }),
+
+      "Tempo Run 1": w({
+        title: "Tempo Run 1",
+        duration: "35 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "15 min Z3", "5 min Z2", "5 min Z1"]
+      }),
+      "Tempo Run 2": w({
+        title: "Tempo Run 2",
+        duration: "38 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "18 min Z3", "5 min Z2", "5 min Z1"]
+      }),
+      "Tempo Run 3": w({
+        title: "Tempo Run 3",
+        duration: "40 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "20 min Z3", "5 min Z2", "5 min Z1"]
+      }),
+      "Tempo Run 4": w({
+        title: "Tempo Run 4",
+        duration: "44 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "24 min Z3", "5 min Z2", "5 min Z1"]
+      }),
+      "Tempo Run 6": w({
+        title: "Tempo Run 6",
+        duration: "50 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "30 min Z3", "5 min Z2", "5 min Z1"]
+      }),
+      "Tempo Run 7": w({
+        title: "Tempo Run 7",
+        duration: "52 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "32 min Z3", "5 min Z2", "5 min Z1"]
+      }),
+      "Tempo Run 9": w({
+        title: "Tempo Run 9",
+        duration: "60 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "40 min Z3", "5 min Z2", "5 min Z1"]
+      }),
+
+      "Speed Play Run 1": w({
+        title: "Speed Play Run 1",
+        duration: "27 mins",
+        zone: "Z4/Z1",
+        kind: "z4",
+        details: ["Main set: 3 x (2 min Z4 / 2 min Z1)"]
+      }),
+      "Speed Play Run 2": w({
+        title: "Speed Play Run 2",
+        duration: "30 mins",
+        zone: "Z5/Z1",
+        kind: "z5",
+        details: ["Main set: 5 x (1 min Z5 / 2 min Z1)"]
+      }),
+      "Speed Play Run 3": w({
+        title: "Speed Play Run 3",
+        duration: "31 mins",
+        zone: "Z1/Z2/Z4",
+        kind: "z4",
+        details: ["5 min Z1", "5 min Z2", "4 x (2 min Z4 / 2 min Z1)", "5 min Z1"]
+      }),
+      "Speed Play Run 4": w({
+        title: "Speed Play Run 4",
+        duration: "33 mins",
+        zone: "Z1/Z2/Z5",
+        kind: "z5",
+        details: ["5 min Z1", "5 min Z2", "6 x (1 min Z5 / 2 min Z1)", "5 min Z1"]
+      }),
+
+      "Hill Repetition Run 4": w({
+        title: "Hill Repetition Run 4",
+        duration: "35 mins",
+        zone: "Z1/Z2/Z5",
+        kind: "z5",
+        details: ["5 min Z1", "5 min Z2", "10 x (30 sec Z5 Uphill / 90 sec Z1)", "5 min Z1"]
+      }),
+
+      "Short Interval Run 2": w({
+        title: "Short Interval Run 2",
+        duration: "39 mins",
+        zone: "Z1/Z2/Z5",
+        kind: "z5",
+        details: ["5 min Z1", "5 min Z2", "8 x (1 min Z5 / 2 min Z1)", "5 min Z1"]
+      }),
+      "Long Interval Run 2": w({
+        title: "Long Interval Run 2",
+        duration: "35 mins",
+        zone: "Z1/Z2/Z4",
+        kind: "z4",
+        details: ["5 min Z1", "5 min Z2", "4 x (3 min Z4 / 2 min Z1)", "5 min Z1"]
+      }),
+      "Mixed Interval Run 1": w({
+        title: "Mixed Interval Run 1",
+        duration: "36 mins",
+        zone: "Z1/Z2/Z3/Z4/Z5",
+        kind: "z4",
+        details: [
+          "5 min Z1",
+          "5 min Z2",
+          "1 min Z5",
+          "2 min Z1",
+          "3 min Z4",
+          "2 min Z1",
+          "5 min Z3",
+          "2 min Z1",
+          "3 min Z4",
+          "2 min Z1",
+          "1 min Z5",
+          "5 min Z1"
+        ]
+      }),
+
+      "Cruise Interval Run 1": w({
+        title: "Cruise Interval Run 1",
+        duration: "52 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "4 x (5 min Z3 / 3 min Z1)", "5 min Z2", "5 min Z1"]
+      }),
+      "Cruise Interval Run 2": w({
+        title: "Cruise Interval Run 2",
+        duration: "64 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "4 x (8 min Z3 / 3 min Z1)", "5 min Z2", "5 min Z1"]
+      }),
+      "Cruise Interval Run 4": w({
+        title: "Cruise Interval Run 4",
+        duration: "80 mins",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["5 min Z1", "5 min Z2", "4 x (12 min Z3 / 3 min Z1)", "5 min Z2", "5 min Z1"]
+      }),
+
+      "Long Run 1": w({
+        title: "Long Run 1",
+        duration: "6 miles",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["1 mi Z1", "4.5 mi Z2", "0.5 mi Z1"]
+      }),
+      "Long Run 2": w({
+        title: "Long Run 2",
+        duration: "7 miles",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["1 mi Z1", "5.5 mi Z2", "0.5 mi Z1"]
+      }),
+      "Long Run 3": w({
+        title: "Long Run 3",
+        duration: "8 miles",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["1 mi Z1", "6.5 mi Z2", "0.5 mi Z1"]
+      }),
+      "Long Run 4": w({
+        title: "Long Run 4",
+        duration: "9 miles",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["1 mi Z1", "7.5 mi Z2", "0.5 mi Z1"]
+      }),
+      "Long Run 5": w({
+        title: "Long Run 5",
+        duration: "10 miles",
+        zone: "Z1/Z2",
+        kind: "z2",
+        details: ["1 mi Z1", "8.5 mi Z2", "0.5 mi Z1"]
+      }),
+      "Long Run 6": w({
+        title: "Long Run 6",
+        duration: "11 miles",
+        zone: "Z2",
+        kind: "z2",
+        details: ["11 miles"]
+      }),
+      "Long Run 7": w({
+        title: "Long Run 7",
+        duration: "12 miles",
+        zone: "Z2",
+        kind: "z2",
+        details: ["12 miles"]
+      }),
+      "Long Run 8": w({
+        title: "Long Run 8",
+        duration: "13 miles",
+        zone: "Z2",
+        kind: "z2",
+        details: ["13 miles"]
+      }),
+      "Long Run 9": w({
+        title: "Long Run 9",
+        duration: "14 miles",
+        zone: "Z2",
+        kind: "z2",
+        details: ["14 miles"]
+      }),
+      "Long Run with Fast Finish 1": w({
+        title: "Long Run with Fast Finish 1",
+        duration: "10 miles",
+        zone: "Z1/Z2/Z3",
+        kind: "z3",
+        details: ["0.5 mi Z1", "8.5 mi Z2", "1 mi Z3"]
+      }),
+
+      Rest: w({ title: "Rest Day", duration: "—", zone: "Rest", kind: "rest", details: ["Rest Day"] }),
+      Race: w({
+        title: "RACE DAY: HALF MARATHON",
+        duration: "Race",
+        zone: "Z3/Z4",
+        kind: "race",
+        details: ["Warm-up 10 mins", "Goal Pace: Zone 3/4"]
+      })
+    };
+
+    const pick = (key) => {
+      const base = T[key];
+      if (!base) throw new Error(`Unknown workout template: ${key}`);
+      return w({ ...base });
+    };
+
+    return [
+      // Phase 1: Base Building (Weeks 1–6)
+      wk(1, [
+        pick("Foundation Run 5"),
+        pick("Fast Finish Run 2"),
+        pick("Foundation Run 6"),
+        pick("Tempo Run 1"),
+        pick("Recovery Run 3"),
+        pick("Foundation Run 5"),
+        pick("Long Run 2")
+      ]),
+      wk(2, [
+        pick("Foundation Run 5"),
+        pick("Fast Finish Run 3"),
+        pick("Foundation Run 7"),
+        pick("Tempo Run 3"),
+        pick("Recovery Run 3"),
+        pick("Foundation Run 6"),
+        pick("Long Run 3")
+      ]),
+      wk(3, [
+        pick("Foundation Run 5"),
+        pick("Fast Finish Run 1"),
+        pick("Recovery Run 3"),
+        w({
+          title: "Tempo Run 1",
+          duration: "35 mins",
+          zone: "Z1/Z2/Z3",
+          kind: "z3",
+          details: ["Main set: 15 min Z3", ...T["Tempo Run 1"].details]
+        }),
+        pick("Rest"),
+        pick("Foundation Run 5"),
+        pick("Long Run 1")
+      ]),
+      wk(4, [
+        pick("Foundation Run 6"),
+        pick("Fast Finish Run 4"),
+        pick("Foundation Run 8"),
+        pick("Tempo Run 4"),
+        pick("Recovery Run 4"),
+        pick("Foundation Run 7"),
+        pick("Long Run 4")
+      ]),
+      wk(5, [
+        pick("Foundation Run 7"),
+        pick("Fast Finish Run 6"),
+        pick("Foundation Run 9"),
+        pick("Tempo Run 6"),
+        pick("Recovery Run 4"),
+        pick("Foundation Run 7"),
+        pick("Long Run 5")
+      ]),
+      wk(6, [
+        pick("Foundation Run 5"),
+        pick("Fast Finish Run 2"),
+        pick("Recovery Run 3"),
+        w({
+          title: "Tempo Run 2",
+          duration: "38 mins",
+          zone: "Z1/Z2/Z3",
+          kind: "z3",
+          details: ["Main set: 18 min Z3", ...T["Tempo Run 2"].details]
+        }),
+        pick("Rest"),
+        pick("Foundation Run 5"),
+        pick("Long Run 2")
+      ]),
+
+      // Phase 2: Peak Phase (Weeks 7–13)
+      wk(7, [
+        pick("Foundation Run 7"),
+        pick("Speed Play Run 4"),
+        pick("Foundation Run 9"),
+        pick("Cruise Interval Run 1"),
+        pick("Recovery Run 4"),
+        pick("Foundation Run 7"),
+        pick("Long Run 6")
+      ]),
+      wk(8, [
+        pick("Foundation Run 8"),
+        pick("Hill Repetition Run 4"),
+        pick("Foundation Run 9"),
+        pick("Cruise Interval Run 2"),
+        pick("Recovery Run 5"),
+        pick("Foundation Run 8"),
+        pick("Long Run 7")
+      ]),
+      wk(9, [
+        pick("Foundation Run 6"),
+        pick("Speed Play Run 1"),
+        pick("Recovery Run 4"),
+        w({
+          title: "Tempo Run 3",
+          duration: "40 mins",
+          zone: "Z1/Z2/Z3",
+          kind: "z3",
+          details: ["Main set: 20 min Z3", ...T["Tempo Run 3"].details]
+        }),
+        pick("Rest"),
+        pick("Foundation Run 6"),
+        pick("Long Run 3")
+      ]),
+      wk(10, [
+        pick("Foundation Run 8"),
+        pick("Short Interval Run 2"),
+        pick("Foundation Run 9"),
+        pick("Tempo Run 9"),
+        pick("Recovery Run 5"),
+        pick("Foundation Run 9"),
+        pick("Long Run with Fast Finish 1")
+      ]),
+      wk(11, [
+        pick("Foundation Run 9"),
+        pick("Long Interval Run 2"),
+        pick("Foundation Run 9"),
+        pick("Cruise Interval Run 4"),
+        pick("Recovery Run 5"),
+        pick("Foundation Run 9"),
+        pick("Long Run 9")
+      ]),
+      wk(12, [
+        pick("Foundation Run 6"),
+        pick("Speed Play Run 2"),
+        pick("Recovery Run 4"),
+        w({
+          title: "Tempo Run 4",
+          duration: "44 mins",
+          zone: "Z1/Z2/Z3",
+          kind: "z3",
+          details: ["Main set: 24 min Z3", ...T["Tempo Run 4"].details]
+        }),
+        pick("Rest"),
+        pick("Foundation Run 6"),
+        pick("Long Run 4")
+      ]),
+      wk(13, [
+        pick("Foundation Run 7"),
+        pick("Mixed Interval Run 1"),
+        pick("Foundation Run 9"),
+        pick("Tempo Run 7"),
+        pick("Recovery Run 4"),
+        pick("Foundation Run 6"),
+        pick("Long Run 8")
+      ]),
+
+      // Phase 3: Taper (Weeks 14–15)
+      wk(14, [
+        pick("Foundation Run 5"),
+        pick("Speed Play Run 3"),
+        pick("Foundation Run 6"),
+        w({
+          title: "Tempo Run 2",
+          duration: "38 mins",
+          zone: "Z1/Z2/Z3",
+          kind: "z3",
+          details: ["Main set: 18 min Z3", ...T["Tempo Run 2"].details]
+        }),
+        pick("Rest"),
+        pick("Recovery Run 3"),
+        pick("Long Run 1")
+      ]),
+      wk(15, [
+        pick("Recovery Run 3"),
+        pick("Speed Play Run 1"),
+        pick("Recovery Run 3"),
+        pick("Rest"),
+        pick("Recovery Run 1"),
+        pick("Race"),
+        null
+      ])
+    ];
+  })()
 ];
 
 function getPhaseForWeek(week){
