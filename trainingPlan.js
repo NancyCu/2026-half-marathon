@@ -73,9 +73,9 @@ function w({ title, duration, zone, kind, details }){
   };
 }
 
-const PLAN = [
-  // Workouts (templates) — updated to match the provided 15-week plan.
-  (() => {
+// Workouts — updated to match the provided 15-week plan.
+// Note: PLAN must be a flat array of week objects (wk(...)), not a nested array.
+const PLAN = (() => {
     const T = {
       "Foundation Run 5": w({
         title: "Foundation Run 5",
@@ -405,7 +405,16 @@ const PLAN = [
 
     const pick = (key) => {
       const base = T[key];
-      if (!base) throw new Error(`Unknown workout template: ${key}`);
+      if (!base) {
+        // Never break the entire calendar due to a typo.
+        return w({
+          title: String(key || "Workout"),
+          duration: "",
+          zone: "—",
+          kind: "",
+          details: ["Workout template missing — please check trainingPlan.js."]
+        });
+      }
       return w({ ...base });
     };
 
@@ -581,8 +590,7 @@ const PLAN = [
         null
       ])
     ];
-  })()
-];
+  })();
 
 function getPhaseForWeek(week){
   if (week <= 6) return { name: TRAINING_META.phases[0].name, goal: TRAINING_META.phases[0].goal };
